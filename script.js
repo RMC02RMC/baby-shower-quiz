@@ -59,43 +59,13 @@ let answered = Array(quiz.length).fill(false);
 
 totalEl.textContent = quiz.length;
 
-/* ---------------- START QUIZ (ENTRY VIDEO FIXED) ---------------- */
+/* ---------------- START QUIZ ---------------- */
 
 startBtn.onclick = () => {
   welcomeScreen.style.display = "none";
   quizScreen.style.display = "block";
-  playEntryVideo();
+  loadQuestion();
 };
-
-/* ---------------- ENTRY VIDEO (AUTOPLAY SAFE) ---------------- */
-
-function playEntryVideo() {
-  resetVideo();
-
-  video.src = "videos/entryvideo.mp4";
-  video.style.display = "block";
-
-  // 🔑 autoplay-safe method
-  video.muted = true;
-  video.load();
-
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.then(() => {
-      // unmute after playback starts
-      setTimeout(() => {
-        video.muted = false;
-      }, 500);
-    }).catch(err => {
-      console.log("Autoplay blocked:", err);
-    });
-  }
-
-  video.onended = () => {
-    resetVideo();
-    loadQuestion();
-  };
-}
 
 /* ---------------- LOAD QUESTION ---------------- */
 
@@ -126,7 +96,7 @@ function checkAnswer(choice) {
     scoreEl.textContent = score;
 
     const index = Math.min(correctCount, 5);
-    playAnswerVideo(`videos/correct${index}.mp4`);
+    playVideo(`videos/correct${index}.mp4`);
   } else {
     wrongCount++;
 
@@ -136,13 +106,13 @@ function checkAnswer(choice) {
       penalties[Math.floor(Math.random() * penalties.length)];
     penaltyEl.style.display = "block";
 
-    playAnswerVideo(`videos/wrong${index}.mp4`);
+    playVideo(`videos/wrong${index}.mp4`);
   }
 }
 
-/* ---------------- ANSWER VIDEO PLAYER ---------------- */
+/* ---------------- VIDEO PLAYER ---------------- */
 
-function playAnswerVideo(src) {
+function playVideo(src) {
   resetVideo();
   video.src = src;
   video.style.display = "block";
@@ -150,8 +120,6 @@ function playAnswerVideo(src) {
   video.load();
   video.play();
 }
-
-/* ---------------- VIDEO RESET ---------------- */
 
 function resetVideo() {
   video.pause();
@@ -198,8 +166,8 @@ function endGame() {
   penaltyEl.style.display = "none";
 
   if (score >= 3) {
-    playAnswerVideo("videos/happy.mp4");
+    playVideo("videos/happy.mp4");
   } else {
-    playAnswerVideo("videos/sad.mp4");
+    playVideo("videos/sad.mp4");
   }
 }
