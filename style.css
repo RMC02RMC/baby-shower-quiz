@@ -1,6 +1,6 @@
 body {
   font-family: 'Poppins', Arial, sans-serif;
-  background: linear-gradient(135deg, #ffe0ec, #e0f7ff);
+  background: linear-gradient(180deg, #f7f6f2, #eef3ec);
   text-align: center;
   margin: 0;
   padding: 0;
@@ -8,57 +8,101 @@ body {
 
 .quiz-container {
   width: 80%;
-  max-width: 900px;
+  max-width: 950px;
   margin: 40px auto;
   background: #ffffff;
-  padding: 35px;
+  padding: 40px;
   border-radius: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+  border: 4px solid #e6dcc3;
 }
 
+/* TITLE */
 h1 {
-  color: #ff69b4;
-  font-size: 32px;
-  margin-bottom: 20px;
+  font-size: 36px;
+  color: #b89b5e; /* gold */
+  margin-bottom: 10px;
+  letter-spacing: 1px;
 }
 
-h2 {
-  color: #444;
+/* SCOREBOARD */
+#scoreBoard {
+  font-size: 20px;
+  color: #6b7f6a;
   margin-bottom: 25px;
+  font-weight: 600;
 }
 
+/* QUESTION */
+h2 {
+  color: #4a5d4e;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+/* OPTIONS */
 #options button {
   display: block;
   width: 70%;
-  margin: 12px auto;
-  padding: 14px;
+  margin: 14px auto;
+  padding: 15px;
   font-size: 18px;
-  border-radius: 30px;
+  border-radius: 40px;
   border: none;
   cursor: pointer;
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  background: #8fae9a; /* sage */
   color: white;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.25s ease;
 }
 
 #options button:hover {
+  background: #789c86;
   transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* PUNISHMENT TEXT */
+#punishment {
+  margin-top: 18px;
+  font-size: 20px;
+  color: #c2410c;
+  font-weight: 600;
+}
+
+/* VIDEO */
+video {
+  width: 70%;
+  margin-top: 30px;
+  border-radius: 25px;
+  border: 4px solid #e6dcc3;
+}
+
+/* BUTTONS */
+.btn-row {
+  margin-top: 30px;
+}
+
+.btn-row button {
+  margin: 6px;
+  padding: 13px 26px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* INDIVIDUAL BUTTON COLORS */
+#backBtn {
+  background: #cbd5c0;
+  color: #3f4f44;
 }
 
 #nextBtn {
-  background: #7dd3fc;
-  color: #000;
-  font-size: 18px;
-  padding: 12px 35px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  margin-top: 20px;
+  background: #8fae9a;
+  color: white;
 }
 
-video {
-  width: 70%;
-  margin-top: 25px;
-  border-radius: 20px;
+#resetBtn {
+  background: #e6dcc3;
+  color: #6b4e2e;
 }
