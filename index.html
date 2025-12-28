@@ -8,20 +8,33 @@
 </head>
 <body>
 
-  <div class="quiz-container">
-    <h1>💕 How Well Do You Know Your Pregnant Wife? 💕</h1>
+<div class="quiz-container">
 
-    <div id="question-box">
-      <h2 id="question"></h2>
-      <div id="options"></div>
-    </div>
+  <h1>💕 How Well Do You Know Your Pregnant Wife? 💕</h1>
 
-    <video id="videoPlayer" controls hidden></video>
-
-    <button id="nextBtn" hidden>Next ➡️</button>
+  <!-- SCOREBOARD -->
+  <div id="scoreBoard">
+    Score: <span id="score">0</span> / <span id="total">5</span>
   </div>
 
-  <script src="script.js"></script>
+  <h2 id="question"></h2>
+  <div id="options"></div>
+
+  <!-- PUNISHMENT -->
+  <div id="punishment" hidden></div>
+
+  <!-- VIDEO -->
+  <video id="videoPlayer" controls hidden></video>
+
+  <!-- BUTTONS -->
+  <div class="btn-row">
+    <button id="backBtn">⬅ Back</button>
+    <button id="nextBtn">Next ➡</button>
+    <button id="resetBtn">🔄 Reset</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
-
