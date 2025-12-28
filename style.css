@@ -1,3 +1,4 @@
+
 body {
   font-family: Poppins, Arial, sans-serif;
   background: linear-gradient(180deg, #f7f6f2, #eef3ec);
@@ -16,9 +17,9 @@ body {
   box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
-/* WELCOME */
+/* WELCOME TEXT */
 .welcome-title {
-  font-size: 48px;     /* BIGGER THAN IMAGE */
+  font-size: 48px;
   color: #6b4e2e;
   margin-bottom: 15px;
 }
@@ -26,9 +27,28 @@ body {
 .welcome-subtitle {
   font-size: 26px;
   color: #4a5d4e;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
+/* COUPLE PHOTOS */
+.couple-photos {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 20px 0 15px;
+  flex-wrap: wrap;
+}
+
+.couple-photos img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 4px solid #e6dcc3;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* MAIN IMAGE */
 .welcome-image {
   display: block;
   width: 75%;
@@ -38,6 +58,7 @@ body {
   border: 5px solid #e6dcc3;
 }
 
+/* START BUTTON */
 .start-btn {
   padding: 18px 45px;
   font-size: 22px;
