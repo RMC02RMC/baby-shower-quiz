@@ -20,33 +20,9 @@
 
   <img src="images/oh-baby.webp" class="welcome-image" alt="Baby Shower">
 
-  <button class="start-btn" onclick="startQuiz()">Start Quiz 💕</button>
+  <button class="start-btn" id="startBtn">Start Quiz 💕</button>
 </div>
 
 <!-- QUIZ SCREEN -->
-<div class="quiz-container" id="quizScreen" hidden>
+<div class="quiz-container"
 
-  <h1>💕 How Well Do You Know Your Pregnant Wife? 💕</h1>
-
-  <div id="scoreBoard">
-    Score: <span id="score">0</span> / <span id="total">5</span>
-  </div>
-
-  <h2 id="question"></h2>
-  <div id="options"></div>
-
-  <div id="punishment" hidden></div>
-
-  <video id="videoPlayer" controls hidden></video>
-
-  <div class="btn-row">
-    <button id="backBtn">⬅ Back</button>
-    <button id="nextBtn">Next ➡</button>
-    <button id="resetBtn">🔄 Reset</button>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
