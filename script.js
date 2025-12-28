@@ -1,37 +1,46 @@
+const welcomeScreen = document.getElementById("welcomeScreen");
+const quizScreen = document.getElementById("quizScreen");
+
+function startQuiz() {
+  welcomeScreen.hidden = true;
+  quizScreen.hidden = false;
+  loadQuestion();
+}
+
 const quiz = [
   {
     question: "💕 What food does she crave the MOST these days?",
     options: ["Spicy snacks 🌶️", "Sweet desserts 🍰", "Sour fruits 🍋", "Salty chips 🍟"],
-    answer: 1
+    answer: 0 // A
   },
   {
     question: "😖 Which smell or food makes her uncomfortable now?",
     options: ["Coffee ☕", "Fried food 🍗", "Perfume 🌸", "Milk 🥛"],
-    answer: 0
+    answer: 1 // B
   },
   {
     question: "💆 What helps her relax the fastest?",
     options: ["Foot massage 👣", "Watching reels 📱", "Sleeping 😴", "Talking 💬"],
-    answer: 0
+    answer: 2 // C
   },
   {
     question: "🌙 How has her sleep pattern changed?",
     options: ["Sleeps more", "Wakes at night", "Day sleeper", "Same as before"],
-    answer: 1
+    answer: 1 // B
   },
   {
     question: "💖 What makes her instantly happy?",
     options: ["Baby shopping 🛍️", "Compliments 💕", "Talking about baby 👶", "Food 🍩"],
-    answer: 2
+    answer: 0 // A
   }
 ];
 
 const punishments = [
-  "😆 Give mommy-to-be a foot massage!",
-  "🍦 Go get her favorite dessert!",
-  "📸 Take a cute couple selfie!",
-  "🍼 Practice diaper changing (imaginary)!",
-  "💃 Do a funny dance for everyone!"
+  "Give mommy-to-be a foot massage 👣",
+  "Get her favorite dessert 🍰",
+  "Say 5 sweet compliments 💕",
+  "Do a funny dance 💃",
+  "Promise diaper duty for one night 🍼"
 ];
 
 let current = 0;
@@ -73,6 +82,7 @@ function checkAnswer(selected) {
     playVideo("videos/correct.mp4");
   } else {
     punishmentEl.textContent =
+      "Punishment 👉 " +
       punishments[Math.floor(Math.random() * punishments.length)];
     punishmentEl.hidden = false;
     playVideo("videos/wrong.mp4");
@@ -106,7 +116,8 @@ document.getElementById("resetBtn").onclick = () => {
   score = 0;
   answered.fill(false);
   scoreEl.textContent = score;
-  loadQuestion();
+  quizScreen.hidden = true;
+  welcomeScreen.hidden = false;
 };
 
 function endGame() {
@@ -121,4 +132,3 @@ function endGame() {
   }
 }
 
-loadQuestion();
