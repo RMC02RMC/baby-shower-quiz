@@ -7,7 +7,7 @@ const quiz = [
       "Sour fruits 🍋",
       "Salty chips 🍟"
     ],
-    answer: 1   // <-- change based on correct answer
+    answer: 1
   },
   {
     question: "😖 Which smell or food makes her uncomfortable now?",
@@ -51,7 +51,6 @@ const quiz = [
   }
 ];
 
-
 let currentQuestion = 0;
 let score = 0;
 
@@ -64,8 +63,9 @@ loadQuestion();
 
 function loadQuestion() {
   video.hidden = true;
-  nextBtn.hidden = true;
+  video.pause();
   optionsEl.innerHTML = "";
+  nextBtn.hidden = true;
 
   const q = quiz[currentQuestion];
   questionEl.textContent = q.question;
@@ -92,6 +92,7 @@ function checkAnswer(selected) {
 function playVideo(src) {
   video.src = src;
   video.hidden = false;
+  video.play();
   nextBtn.hidden = false;
 }
 
@@ -105,11 +106,11 @@ nextBtn.onclick = () => {
 };
 
 function endGame() {
-  questionEl.textContent = `🎉 Game Over! Score: ${score}/${quiz.length}`;
+  questionEl.textContent = `🎉 Quiz Over! Score: ${score}/${quiz.length}`;
   optionsEl.innerHTML = "";
   nextBtn.hidden = true;
 
-  if (score >= 4) {
+  if (score >= quiz.length) {
     playVideo("videos/champion.mp4");
   }
 }
