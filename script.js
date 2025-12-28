@@ -1,12 +1,12 @@
 const welcomeScreen = document.getElementById("welcomeScreen");
 const quizScreen = document.getElementById("quizScreen");
-
 const startBtn = document.getElementById("startBtn");
+
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const scoreEl = document.getElementById("score");
 const totalEl = document.getElementById("total");
-const punishmentEl = document.getElementById("punishment");
+const penaltyEl = document.getElementById("penalty");
 const video = document.getElementById("videoPlayer");
 
 const quiz = [
@@ -32,12 +32,12 @@ const quiz = [
   },
   {
     question: "What makes her instantly happy?",
-    options: ["Baby shopping 🛍️", "Compliments 💕", "Talking about baby 👶", "Food 🍩"],
+    options: ["Baby shopping 🛍️", "Compliments 💕", "Long Drive 🚗", "Food 🍩"],
     answer: 0 // A
   }
 ];
 
-const punishments = [
+const penalties = [
   "Give mommy-to-be a foot massage 👣",
   "Get her favorite dessert 🍰",
   "Say 5 sweet compliments 💕",
@@ -51,7 +51,6 @@ let answered = Array(quiz.length).fill(false);
 
 totalEl.textContent = quiz.length;
 
-// START QUIZ ONLY ON BUTTON CLICK
 startBtn.onclick = () => {
   welcomeScreen.style.display = "none";
   quizScreen.style.display = "block";
@@ -62,7 +61,7 @@ function loadQuestion() {
   const q = quiz[current];
   questionEl.textContent = `Q${current + 1}. ${q.question}`;
   optionsEl.innerHTML = "";
-  punishmentEl.style.display = "none";
+  penaltyEl.style.display = "none";
   video.style.display = "none";
   video.pause();
 
@@ -83,10 +82,10 @@ function checkAnswer(choice) {
     scoreEl.textContent = score;
     playVideo("videos/correct.mp4");
   } else {
-    punishmentEl.textContent =
-      "Punishment – " +
-      punishments[Math.floor(Math.random() * punishments.length)];
-    punishmentEl.style.display = "block";
+    penaltyEl.textContent =
+      "Penalty – " +
+      penalties[Math.floor(Math.random() * penalties.length)];
+    penaltyEl.style.display = "block";
     playVideo("videos/wrong.mp4");
   }
 }
@@ -125,7 +124,7 @@ document.getElementById("resetBtn").onclick = () => {
 function endGame() {
   questionEl.textContent = `🎉 Final Score: ${score} / ${quiz.length}`;
   optionsEl.innerHTML = "";
-  punishmentEl.style.display = "none";
+  penaltyEl.style.display = "none";
 
   if (score >= 3) {
     playVideo("videos/happy.mp4");
@@ -133,4 +132,3 @@ function endGame() {
     playVideo("videos/sad.mp4");
   }
 }
-
