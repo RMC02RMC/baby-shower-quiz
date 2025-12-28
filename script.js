@@ -9,6 +9,8 @@ const totalEl = document.getElementById("total");
 const penaltyEl = document.getElementById("penalty");
 const video = document.getElementById("videoPlayer");
 
+/* ---------------- QUESTIONS ---------------- */
+
 const quiz = [
   {
     question: "What food does she crave the MOST these days?",
@@ -37,6 +39,8 @@ const quiz = [
   }
 ];
 
+/* ---------------- PENALTIES ---------------- */
+
 const penalties = [
   "Give mommy-to-be a foot massage 👣",
   "Get her favorite dessert 🍰",
@@ -45,25 +49,35 @@ const penalties = [
   "Promise diaper duty 🍼"
 ];
 
+/* ---------------- STATE ---------------- */
+
 let current = 0;
 let score = 0;
+let correctCount = 0;
+let wrongCount = 0;
 let answered = Array(quiz.length).fill(false);
 
 totalEl.textContent = quiz.length;
 
+/* ---------------- START QUIZ WITH ENTRY VIDEO ---------------- */
+
 startBtn.onclick = () => {
   welcomeScreen.style.display = "none";
   quizScreen.style.display = "block";
-  loadQuestion();
+
+  playVideo("videos/entryvideo.mp4", () => {
+    loadQuestion();
+  });
 };
+
+/* ---------------- LOAD QUESTION ---------------- */
 
 function loadQuestion() {
   const q = quiz[current];
   questionEl.textContent = `Q${current + 1}. ${q.question}`;
   optionsEl.innerHTML = "";
   penaltyEl.style.display = "none";
-  video.style.display = "none";
-  video.pause();
+  hideVideo();
 
   q.options.forEach((opt, i) => {
     const btn = document.createElement("button");
@@ -73,28 +87,53 @@ function loadQuestion() {
   });
 }
 
+/* ---------------- CHECK ANSWER ---------------- */
+
 function checkAnswer(choice) {
   if (answered[current]) return;
   answered[current] = true;
 
   if (choice === quiz[current].answer) {
     score++;
+    correctCount++;
     scoreEl.textContent = score;
-    playVideo("videos/correct.mp4");
+
+    const correctVideoIndex = Math.min(correctCount, 5);
+    playVideo(`videos/correct${correctVideoIndex}.mp4`);
   } else {
+    wrongCount++;
+
+    const wrongVideoIndex = Math.min(wrongCount, 3);
     penaltyEl.textContent =
       "Penalty – " +
       penalties[Math.floor(Math.random() * penalties.length)];
     penaltyEl.style.display = "block";
-    playVideo("videos/wrong.mp4");
+
+    playVideo(`videos/wrong${wrongVideoIndex}.mp4`);
   }
 }
 
-function playVideo(src) {
+/* ---------------- VIDEO HANDLER ---------------- */
+
+function playVideo(src, onEndCallback) {
   video.src = src;
   video.style.display = "block";
   video.play();
+
+  video.onended = () => {
+    if (onEndCallback) {
+      onEndCallback();
+    }
+  };
 }
+
+function hideVideo() {
+  video.pause();
+  video.style.display = "none";
+  video.onended = null;
+}
+
+/* ---------------- NAVIGATION ---------------- */
 
 document.getElementById("nextBtn").onclick = () => {
   if (current < quiz.length - 1) {
@@ -115,11 +154,16 @@ document.getElementById("backBtn").onclick = () => {
 document.getElementById("resetBtn").onclick = () => {
   current = 0;
   score = 0;
+  correctCount = 0;
+  wrongCount = 0;
   answered.fill(false);
   scoreEl.textContent = score;
+
   quizScreen.style.display = "none";
   welcomeScreen.style.display = "block";
 };
+
+/* ---------------- END GAME ---------------- */
 
 function endGame() {
   questionEl.textContent = `🎉 Final Score: ${score} / ${quiz.length}`;
@@ -132,4 +176,3 @@ function endGame() {
     playVideo("videos/sad.mp4");
   }
 }
-
