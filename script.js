@@ -59,16 +59,43 @@ let answered = Array(quiz.length).fill(false);
 
 totalEl.textContent = quiz.length;
 
-/* ---------------- START QUIZ WITH ENTRY VIDEO ---------------- */
+/* ---------------- START QUIZ (ENTRY VIDEO FIXED) ---------------- */
 
 startBtn.onclick = () => {
   welcomeScreen.style.display = "none";
   quizScreen.style.display = "block";
-
-  playVideo("videos/entryvideo.mp4", () => {
-    loadQuestion();
-  });
+  playEntryVideo();
 };
+
+/* ---------------- ENTRY VIDEO (AUTOPLAY SAFE) ---------------- */
+
+function playEntryVideo() {
+  resetVideo();
+
+  video.src = "videos/entryvideo.mp4";
+  video.style.display = "block";
+
+  // 🔑 autoplay-safe method
+  video.muted = true;
+  video.load();
+
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      // unmute after playback starts
+      setTimeout(() => {
+        video.muted = false;
+      }, 500);
+    }).catch(err => {
+      console.log("Autoplay blocked:", err);
+    });
+  }
+
+  video.onended = () => {
+    resetVideo();
+    loadQuestion();
+  };
+}
 
 /* ---------------- LOAD QUESTION ---------------- */
 
@@ -77,7 +104,7 @@ function loadQuestion() {
   questionEl.textContent = `Q${current + 1}. ${q.question}`;
   optionsEl.innerHTML = "";
   penaltyEl.style.display = "none";
-  hideVideo();
+  resetVideo();
 
   q.options.forEach((opt, i) => {
     const btn = document.createElement("button");
@@ -98,36 +125,35 @@ function checkAnswer(choice) {
     correctCount++;
     scoreEl.textContent = score;
 
-    const correctVideoIndex = Math.min(correctCount, 5);
-    playVideo(`videos/correct${correctVideoIndex}.mp4`);
+    const index = Math.min(correctCount, 5);
+    playAnswerVideo(`videos/correct${index}.mp4`);
   } else {
     wrongCount++;
 
-    const wrongVideoIndex = Math.min(wrongCount, 3);
+    const index = Math.min(wrongCount, 3);
     penaltyEl.textContent =
       "Penalty – " +
       penalties[Math.floor(Math.random() * penalties.length)];
     penaltyEl.style.display = "block";
 
-    playVideo(`videos/wrong${wrongVideoIndex}.mp4`);
+    playAnswerVideo(`videos/wrong${index}.mp4`);
   }
 }
 
-/* ---------------- VIDEO HANDLER ---------------- */
+/* ---------------- ANSWER VIDEO PLAYER ---------------- */
 
-function playVideo(src, onEndCallback) {
+function playAnswerVideo(src) {
+  resetVideo();
   video.src = src;
   video.style.display = "block";
+  video.muted = false;
+  video.load();
   video.play();
-
-  video.onended = () => {
-    if (onEndCallback) {
-      onEndCallback();
-    }
-  };
 }
 
-function hideVideo() {
+/* ---------------- VIDEO RESET ---------------- */
+
+function resetVideo() {
   video.pause();
   video.style.display = "none";
   video.onended = null;
@@ -161,6 +187,7 @@ document.getElementById("resetBtn").onclick = () => {
 
   quizScreen.style.display = "none";
   welcomeScreen.style.display = "block";
+  resetVideo();
 };
 
 /* ---------------- END GAME ---------------- */
@@ -171,8 +198,8 @@ function endGame() {
   penaltyEl.style.display = "none";
 
   if (score >= 3) {
-    playVideo("videos/happy.mp4");
+    playAnswerVideo("videos/happy.mp4");
   } else {
-    playVideo("videos/sad.mp4");
+    playAnswerVideo("videos/sad.mp4");
   }
 }
