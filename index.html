@@ -1,33 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Oh Baby Quiz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Pregnant Wife Quiz 💕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- WELCOME SCREEN -->
-<div class="quiz-container" id="welcomeScreen">
-  <h1>✨ Oh Baby! ✨</h1>
-
-  <h2 class="welcome-text">
-    Welcome to<br>
-    <span>Ranga & Kinjal’s</span><br>
-    Baby Shower Party 👶🎉
-  </h2>
-
-  <img src="images/oh-baby.webp" class="welcome-image" alt="Baby Shower">
-
-  <button class="start-btn" onclick="startQuiz()">Start Quiz 💕</button>
-</div>
-
-<!-- QUIZ SCREEN -->
-<div class="quiz-container" id="quizScreen" hidden>
+<div class="quiz-container">
 
   <h1>💕 How Well Do You Know Your Pregnant Wife? 💕</h1>
 
+  <!-- SCOREBOARD -->
   <div id="scoreBoard">
     Score: <span id="score">0</span> / <span id="total">5</span>
   </div>
@@ -35,10 +20,13 @@
   <h2 id="question"></h2>
   <div id="options"></div>
 
+  <!-- PUNISHMENT -->
   <div id="punishment" hidden></div>
 
+  <!-- VIDEO -->
   <video id="videoPlayer" controls hidden></video>
 
+  <!-- BUTTONS -->
   <div class="btn-row">
     <button id="backBtn">⬅ Back</button>
     <button id="nextBtn">Next ➡</button>
