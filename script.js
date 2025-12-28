@@ -1,6 +1,7 @@
 const welcomeScreen = document.getElementById("welcomeScreen");
 const quizScreen = document.getElementById("quizScreen");
 
+const startBtn = document.getElementById("startBtn");
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const scoreEl = document.getElementById("score");
@@ -8,37 +9,31 @@ const totalEl = document.getElementById("total");
 const punishmentEl = document.getElementById("punishment");
 const video = document.getElementById("videoPlayer");
 
-function startQuiz() {
-  welcomeScreen.hidden = true;
-  quizScreen.hidden = false;
-  loadQuestion();
-}
-
 const quiz = [
   {
     question: "What food does she crave the MOST these days?",
     options: ["Spicy snacks 🌶️", "Sweet desserts 🍰", "Sour fruits 🍋", "Salty chips 🍟"],
-    answer: 0
+    answer: 0 // A
   },
   {
     question: "Which smell or food makes her uncomfortable now?",
     options: ["Coffee ☕", "Fried food 🍗", "Perfume 🌸", "Milk 🥛"],
-    answer: 1
+    answer: 1 // B
   },
   {
     question: "What helps her relax the fastest?",
     options: ["Foot massage 👣", "Watching reels 📱", "Sleeping 😴", "Talking 💬"],
-    answer: 2
+    answer: 2 // C
   },
   {
     question: "How has her sleep pattern changed?",
     options: ["Sleeps more", "Wakes at night", "Day sleeper", "Same as before"],
-    answer: 1
+    answer: 1 // B
   },
   {
     question: "What makes her instantly happy?",
     options: ["Baby shopping 🛍️", "Compliments 💕", "Talking about baby 👶", "Food 🍩"],
-    answer: 0
+    answer: 0 // A
   }
 ];
 
@@ -56,12 +51,19 @@ let answered = Array(quiz.length).fill(false);
 
 totalEl.textContent = quiz.length;
 
+// START QUIZ ONLY ON BUTTON CLICK
+startBtn.onclick = () => {
+  welcomeScreen.style.display = "none";
+  quizScreen.style.display = "block";
+  loadQuestion();
+};
+
 function loadQuestion() {
   const q = quiz[current];
   questionEl.textContent = `Q${current + 1}. ${q.question}`;
   optionsEl.innerHTML = "";
-  punishmentEl.hidden = true;
-  video.hidden = true;
+  punishmentEl.style.display = "none";
+  video.style.display = "none";
   video.pause();
 
   q.options.forEach((opt, i) => {
@@ -84,14 +86,14 @@ function checkAnswer(choice) {
     punishmentEl.textContent =
       "Punishment – " +
       punishments[Math.floor(Math.random() * punishments.length)];
-    punishmentEl.hidden = false;
+    punishmentEl.style.display = "block";
     playVideo("videos/wrong.mp4");
   }
 }
 
 function playVideo(src) {
   video.src = src;
-  video.hidden = false;
+  video.style.display = "block";
   video.play();
 }
 
@@ -116,14 +118,14 @@ document.getElementById("resetBtn").onclick = () => {
   score = 0;
   answered.fill(false);
   scoreEl.textContent = score;
-  quizScreen.hidden = true;
-  welcomeScreen.hidden = false;
+  quizScreen.style.display = "none";
+  welcomeScreen.style.display = "block";
 };
 
 function endGame() {
   questionEl.textContent = `🎉 Final Score: ${score} / ${quiz.length}`;
   optionsEl.innerHTML = "";
-  punishmentEl.hidden = true;
+  punishmentEl.style.display = "none";
 
   if (score >= 3) {
     playVideo("videos/happy.mp4");
@@ -131,3 +133,4 @@ function endGame() {
     playVideo("videos/sad.mp4");
   }
 }
+
