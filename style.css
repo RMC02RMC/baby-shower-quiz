@@ -1,71 +1,58 @@
 body {
-  font-family: Poppins, Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   background: linear-gradient(180deg, #f7f6f2, #eef3ec);
-  margin: 0;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .quiz-container {
   width: 80%;
   max-width: 950px;
   margin: 40px auto;
-  background: white;
+  background: #ffffff;
   padding: 40px;
   border-radius: 30px;
-  border: 4px solid #e6dcc3;
   box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+  border: 4px solid #e6dcc3;
 }
 
+/* TITLE */
 h1 {
-  color: #b89b5e;
+  font-size: 36px;
+  color: #b89b5e; /* gold */
+  margin-bottom: 10px;
+  letter-spacing: 1px;
 }
 
-#welcomeScreen span {
-  color: #b89b5e;
-  font-weight: bold;
-}
-
-.welcome-text {
-  font-size: 26px;
-  color: #4a5d4e;
-}
-
-.welcome-image {
-  width: 80%;
-  max-width: 700px;
-  margin: 25px 0;
-  border-radius: 25px;
-  border: 5px solid #e6dcc3;
-}
-
-.start-btn {
-  padding: 15px 40px;
-  font-size: 20px;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  background: #8fae9a;
-  color: white;
-}
-
+/* SCOREBOARD */
 #scoreBoard {
   font-size: 20px;
-  margin-bottom: 20px;
-  color: #4a5d4e;
-  font-weight: bold;
+  color: #6b7f6a;
+  margin-bottom: 25px;
+  font-weight: 600;
 }
 
+/* QUESTION */
+h2 {
+  color: #4a5d4e;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+/* OPTIONS */
 #options button {
   display: block;
   width: 70%;
   margin: 14px auto;
   padding: 15px;
   font-size: 18px;
-  border-radius: 35px;
+  border-radius: 40px;
   border: none;
   cursor: pointer;
-  background: #8fae9a;
+  background: #8fae9a; /* sage */
   color: white;
+  transition: all 0.25s ease;
 }
 
 #options button:hover {
@@ -73,29 +60,49 @@ h1 {
   transform: scale(1.05);
 }
 
+/* PUNISHMENT TEXT */
 #punishment {
-  margin-top: 15px;
+  margin-top: 18px;
   font-size: 20px;
-  font-weight: bold;
   color: #c2410c;
+  font-weight: 600;
 }
 
+/* VIDEO */
 video {
   width: 70%;
-  margin-top: 25px;
-  border-radius: 20px;
+  margin-top: 30px;
+  border-radius: 25px;
   border: 4px solid #e6dcc3;
+}
+
+/* BUTTONS */
+.btn-row {
+  margin-top: 30px;
 }
 
 .btn-row button {
   margin: 6px;
-  padding: 12px 24px;
+  padding: 13px 26px;
   border-radius: 30px;
   border: none;
   font-size: 16px;
   cursor: pointer;
+  font-weight: 600;
 }
 
-#backBtn { background: #cbd5c0; }
-#nextBtn { background: #8fae9a; color: white; }
-#resetBtn { background: #e6dcc3; }
+/* INDIVIDUAL BUTTON COLORS */
+#backBtn {
+  background: #cbd5c0;
+  color: #3f4f44;
+}
+
+#nextBtn {
+  background: #8fae9a;
+  color: white;
+}
+
+#resetBtn {
+  background: #e6dcc3;
+  color: #6b4e2e;
+}
