@@ -20,14 +20,14 @@ h1 {
   color: #b89b5e;
 }
 
-#welcomeScreen span {
-  color: #b89b5e;
-  font-weight: bold;
-}
-
 .welcome-text {
   font-size: 26px;
   color: #4a5d4e;
+}
+
+.welcome-text span {
+  color: #b89b5e;
+  font-weight: bold;
 }
 
 .welcome-image {
@@ -99,3 +99,4 @@ video {
 #backBtn { background: #cbd5c0; }
 #nextBtn { background: #8fae9a; color: white; }
 #resetBtn { background: #e6dcc3; }
+
