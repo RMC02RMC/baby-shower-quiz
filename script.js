@@ -13,27 +13,27 @@ const quiz = [
   {
     question: "What food does she crave the MOST these days?",
     options: ["Spicy snacks 🌶️", "Sweet desserts 🍰", "Sour fruits 🍋", "Salty chips 🍟"],
-    answer: 0 // A
+    answer: 0
   },
   {
     question: "Which smell or food makes her uncomfortable now?",
     options: ["Coffee ☕", "Fried food 🍗", "Perfume 🌸", "Milk 🥛"],
-    answer: 1 // B
+    answer: 1
   },
   {
     question: "What helps her relax the fastest?",
     options: ["Foot massage 👣", "Watching reels 📱", "Sleeping 😴", "Talking 💬"],
-    answer: 2 // C
+    answer: 2
   },
   {
     question: "How has her sleep pattern changed?",
     options: ["Sleeps more", "Wakes at night", "Day sleeper", "Same as before"],
-    answer: 1 // B
+    answer: 1
   },
   {
     question: "What makes her instantly happy?",
     options: ["Baby shopping 🛍️", "Compliments 💕", "Long Drive 🚗", "Food 🍩"],
-    answer: 0 // A
+    answer: 0
   }
 ];
 
@@ -132,3 +132,4 @@ function endGame() {
     playVideo("videos/sad.mp4");
   }
 }
+
