@@ -1,35 +1,56 @@
 const quiz = [
   {
-    question: "When do most babies arrive?",
+    question: "💕 What food does she crave the MOST these days?",
     options: [
-      "Exactly on due date",
-      "1–2 weeks before due date",
-      "1–2 weeks after due date",
-      "Only on weekends"
+      "Spicy snacks 🌶️",
+      "Sweet desserts 🍰",
+      "Sour fruits 🍋",
+      "Salty chips 🍟"
+    ],
+    answer: 1   // <-- change based on correct answer
+  },
+  {
+    question: "😖 Which smell or food makes her uncomfortable now?",
+    options: [
+      "Coffee ☕",
+      "Fried food 🍗",
+      "Perfume 🌸",
+      "Milk 🥛"
+    ],
+    answer: 0
+  },
+  {
+    question: "💆 What helps her relax the fastest?",
+    options: [
+      "Foot massage 👣",
+      "Watching reels / TV 📱",
+      "Sleeping 😴",
+      "Talking / venting 💬"
+    ],
+    answer: 0
+  },
+  {
+    question: "🌙 How has her sleep pattern changed?",
+    options: [
+      "Sleeps more than before",
+      "Wakes up often at night",
+      "Sleeps only during daytime",
+      "Same as before"
     ],
     answer: 1
   },
   {
-    question: "When do pregnancy cravings hit the most?",
-    options: ["Morning", "Afternoon", "Late night", "During workouts"],
-    answer: 2
-  },
-  {
-    question: "Most common reason babies cry?",
-    options: ["Boredom", "Hunger", "Bad dreams", "Lonely"],
-    answer: 1
-  },
-  {
-    question: "What do babies usually do first?",
-    options: ["Sit", "Walk", "Roll over", "Crawl"],
-    answer: 2
-  },
-  {
-    question: "How often do newborns wake at night?",
-    options: ["Once", "Twice", "Every 2–3 hours", "Never"],
+    question: "💖 What makes her instantly emotional or happy?",
+    options: [
+      "Baby shopping 🛍️",
+      "Compliments 💕",
+      "Talking about the baby 👶",
+      "Food surprises 🍩"
+    ],
     answer: 2
   }
 ];
+
 
 let currentQuestion = 0;
 let score = 0;
