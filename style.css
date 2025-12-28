@@ -10,37 +10,37 @@ body {
   max-width: 950px;
   margin: 40px auto;
   background: white;
-  padding: 40px;
+  padding: 45px;
   border-radius: 30px;
   border: 4px solid #e6dcc3;
   box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
-h1 {
-  color: #b89b5e;
+/* WELCOME */
+.welcome-title {
+  font-size: 48px;     /* BIGGER THAN IMAGE */
+  color: #6b4e2e;
+  margin-bottom: 15px;
 }
 
-.welcome-text {
+.welcome-subtitle {
   font-size: 26px;
   color: #4a5d4e;
-}
-
-.welcome-text span {
-  color: #b89b5e;
-  font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .welcome-image {
-  width: 80%;
+  display: block;
+  width: 75%;
   max-width: 700px;
-  margin: 25px 0;
+  margin: 30px auto;
   border-radius: 25px;
   border: 5px solid #e6dcc3;
 }
 
 .start-btn {
-  padding: 15px 40px;
-  font-size: 20px;
+  padding: 18px 45px;
+  font-size: 22px;
   border-radius: 40px;
   border: none;
   cursor: pointer;
@@ -48,8 +48,13 @@ h1 {
   color: white;
 }
 
+/* QUIZ */
+h1 {
+  color: #b89b5e;
+}
+
 #scoreBoard {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 20px;
   color: #4a5d4e;
   font-weight: bold;
@@ -59,8 +64,8 @@ h1 {
   display: block;
   width: 70%;
   margin: 14px auto;
-  padding: 15px;
-  font-size: 18px;
+  padding: 16px;
+  font-size: 19px;
   border-radius: 35px;
   border: none;
   cursor: pointer;
@@ -73,30 +78,33 @@ h1 {
   transform: scale(1.05);
 }
 
-#punishment {
-  margin-top: 15px;
-  font-size: 20px;
+/* PENALTY */
+#penalty {
+  margin-top: 18px;
+  font-size: 22px;
   font-weight: bold;
   color: #c2410c;
 }
 
+/* VIDEO */
 video {
+  display: block;
   width: 70%;
-  margin-top: 25px;
+  margin: 30px auto;
   border-radius: 20px;
   border: 4px solid #e6dcc3;
 }
 
+/* BUTTONS */
 .btn-row button {
-  margin: 6px;
-  padding: 12px 24px;
+  margin: 8px;
+  padding: 14px 26px;
   border-radius: 30px;
   border: none;
-  font-size: 16px;
+  font-size: 17px;
   cursor: pointer;
 }
 
 #backBtn { background: #cbd5c0; }
 #nextBtn { background: #8fae9a; color: white; }
 #resetBtn { background: #e6dcc3; }
-
